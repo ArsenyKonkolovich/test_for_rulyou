@@ -1,0 +1,24 @@
+{
+  "name": "test_for_rulyou",
+  "version": "1.0.0",
+  "description": "This is a test task for the \"rulyou.ru\" company",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ArsenyKonkolovich/test_for_rulyou.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArsenyKonkolovich/test_for_rulyou/issues"
+  },
+  "homepage": "https://github.com/ArsenyKonkolovich/test_for_rulyou#readme",
+  "dependencies": {
+    "adm-zip": "^0.5.10",
+    "iconv-lite": "^0.6.3",
+    "node-fetch": "^3.3.1"
+  }
+}
