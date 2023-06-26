@@ -6,8 +6,8 @@ import fetch from "node-fetch"
 const prepareBICDataForDBWhrite = async () => {
   const response = await fetch("http://www.cbr.ru/s/newbik")
   const arrayBufferFromZip = await response.arrayBuffer()
-  const bufferFromZip = Buffer.from(arrayBuffer)
-  const zipArchive = new AdmZip(buffer)
+  const bufferFromZip = Buffer.from(arrayBufferFromZip)
+  const zipArchive = new AdmZip(bufferFromZip)
   const zipEntries = zipArchive.getEntries()
   let xmlData
   for (const entry of zipEntries) {
