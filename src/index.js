@@ -22,19 +22,27 @@ const prepareBICDataForDBWhrite = async () => {
   const bicDirectoryEntries = parsedXml.ED807.BICDirectoryEntry
 
   const result = []
+  // console.log(JSON.stringify(bicDirectoryEntries, "\t", 1))
 
   for (const entry of bicDirectoryEntries) {
     const bic = entry["$"].BIC
     const name = entry.ParticipantInfo["$"].NameP
     const accounts = entry.Accounts
 
-    if (accounts && Array.isArray(accounts)) {
-      for (const account of accounts) {
-        const corrAccount = account["$"].Account
+    if (accounts) {
+      if (Array.isArray(accounts)) {
+        for (const account of accounts) {
+          const corrAccount = account["$"].Account
+          result.push({ bic, name, corrAccount })
+        }
+      } else {
+        const corrAccount = accounts["$"].Account
         result.push({ bic, name, corrAccount })
       }
     }
   }
+
+  console.log(JSON.stringify(result, "\t", 1))
 
   return result
 }
