@@ -5,10 +5,10 @@ import fetch from "node-fetch"
 
 const prepareBICDataForDBWhrite = async () => {
   const response = await fetch("http://www.cbr.ru/s/newbik")
-  const arrayBuffer = await response.arrayBuffer()
-  const buffer = Buffer.from(arrayBuffer)
-  const zip = new AdmZip(buffer)
-  const zipEntries = zip.getEntries()
+  const arrayBufferFromZip = await response.arrayBuffer()
+  const bufferFromZip = Buffer.from(arrayBuffer)
+  const zipArchive = new AdmZip(buffer)
+  const zipEntries = zipArchive.getEntries()
   let xmlData
   for (const entry of zipEntries) {
     xmlData = entry.getData().toString("binary")
@@ -35,8 +35,6 @@ const prepareBICDataForDBWhrite = async () => {
       }
     }
   }
-
-  console.log(JSON.stringify(result, "\t", 1))
 
   return result
 }
